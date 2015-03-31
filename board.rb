@@ -45,4 +45,14 @@ class Board
     # 2. see if opposing piece can move to that position
   end
 
+  def [](pos)
+    row, col = pos
+    @square[row][col]
+  end
+
+  def []=(pos, piece)
+    row, col = pos
+    @square[row][col] = piece
+  end
+
 end

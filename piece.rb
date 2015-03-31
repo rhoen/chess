@@ -36,6 +36,14 @@ class Piece
     PIECES[color][self.class.to_s.downcase.to_sym] + " "
   end
 
+  def off_board?(pos)
+    pos.all? { |el| el.between?(0, @board.size) }
+  end
+
+  def available_square?(pos)
+    @board[pos].nil? || @board[pos].color != self.color
+  end
+
   protected
   attr_reader :board
   attr_writer :position
@@ -51,9 +59,10 @@ class SlidingPiece < Piece
     last_move = available_moves.last
 
     move_dirs.each do |dir|
-      until off_board?(last_move) || on_other_piece?(last_move)
+      until off_board?(last_move) || !available_square?(last_move)
         last_move = available_moves.last
         available_moves << [last_move[0] + dir[0], last_move[1] + dir[1]]
+        break if @board[last_move].color != self.color
       end
       available_moves << [self.position]
     end
@@ -66,6 +75,7 @@ class SlidingPiece < Piece
   def move_dirs
     raise NotImplementedError
   end
+
 end
 
 class Bishop < SlidingPiece
