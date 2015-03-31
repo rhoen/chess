@@ -33,7 +33,7 @@ class Piece
   end
 
   def display
-    PIECES[color][self.class.to_s.downcase.to_sym]
+    PIECES[color][self.class.to_s.downcase.to_sym] + " "
   end
 
   protected
