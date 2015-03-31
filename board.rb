@@ -1,3 +1,5 @@
+require "colorize"
+
 class Board
 
   SQUARES = {black: "  ".colorize(:background => :black),

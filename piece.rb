@@ -22,7 +22,7 @@ class Piece
     }
   }
 
-  attr_reader :color, :position
+  attr_accessor :color, :position, :board
 
   def initialize(color, board, position)
     @color = color
@@ -47,9 +47,7 @@ class Piece
     pos == self.position
   end
 
-  protected
-  attr_reader :board
-  attr_writer :position
+
 end
 
 class SlidingPiece < Piece
@@ -69,9 +67,15 @@ class SlidingPiece < Piece
       #   last_move = available_moves.last
       # end
 
+
+
+      begin
+
+
       loop do
+        # if last_move[0].is_a?(Array)
+
         last_move = available_moves.last
-        byebug
         next_move = [last_move[0] + dir[0], last_move[1] + dir[1]]
 
         break if off_board?(next_move)
@@ -82,12 +86,24 @@ class SlidingPiece < Piece
 
       end
 
-      available_moves << [self.position]
+    rescue
+      p available_moves
+      p last_move
+      p dir
+      p local_variables
+      break
     end
 
-    available_moves.delete([self.position])
+
+
+
+      available_moves << self.position
+    end
+
+    available_moves.delete(self.position)
 
     available_moves
+
   end
 
   def move_dirs
