@@ -2,15 +2,15 @@ require "colorize"
 
 class Board
 
-  SQUARES = {black: "  ".colorize(:background => :black),
-    white: "  ".colorize(:background => :white)}
-
   attr_reader :squares
 
   def initialize()
     @squares = Array.new(8) { Array.new(8) }
   end
 
+  def square_color(is_white)
+    is_white ? :white : :light_black
+  end
 
   def display
     is_white = true
@@ -19,11 +19,12 @@ class Board
     @squares.each_with_index do |row, row_num|
       row.each_with_index do |piece, col_num|
 
+        color = square_color(is_white)
+
         if piece
-          display_string << piece.display.colorize(
-          :background => square_color(is_white))
+          display_string << colored_square(piece.display, color)
         else
-          display_string << SQUARES[square_color(is_white)]
+          display_string << colored_square("  ", color)
         end
 
         is_white = !is_white
@@ -35,8 +36,9 @@ class Board
     display_string
   end
 
-  def square_color(is_white)
-    is_white ? :white : :black
+
+  def colored_square(string, color)
+    string.colorize(:background => color)
   end
 
   def move(start, end_pos)
