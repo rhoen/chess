@@ -43,22 +43,48 @@ end
 
 class SlidingPiece < Piece
 
+  DIAGONAL_DIRS = [[1, 1], [1, -1], [-1, -1], [-1, 1]]
+  ORTHOGONAL_DIRS = [[1, 0], [0, 1], [-1, 0], [0, -1]]
+
+  def moves
+    available_moves = [self.position]
+    last_move = available_moves.last
+
+    move_dirs.each do |dir|
+      until off_board?(last_move) || on_other_piece?(last_move)
+        last_move = available_moves.last
+        available_moves << [last_move[0] + dir[0], last_move[1] + dir[1]]
+      end
+      available_moves << [self.position]
+    end
+
+    available_moves.delete([self.position])
+
+    available_moves
+  end
+
   def move_dirs
     raise NotImplementedError
   end
-
 end
 
 class Bishop < SlidingPiece
 
+  def move_dirs
+    DIAGONAL_DIRS
+  end
 end
 
 class Rook < SlidingPiece
-
+  def move_dirs
+    ORTHOGONAL_DIRS
+  end
 end
 
 class Queen < SlidingPiece
-
+  def move_dirs
+    DIAGONAL_DIRS + ORTHOGONAL_DIRS
+  end
 end
 
 class SteppingPiece < Piece

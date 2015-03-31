@@ -10,7 +10,7 @@ class Board
   def display
     is_white = true
 
-    display_string = '\n'
+    display_string = "\n"
     @squares.each_with_index do |row, row_num|
       row.each_with_index do |piece, col_num|
 
@@ -23,6 +23,7 @@ class Board
 
         is_white = !is_white
       end
+      is_white = !is_white
       display_string << "\n"
     end
 
