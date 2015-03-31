@@ -1,4 +1,25 @@
 class Piece
+
+  PIECES = {
+    :white => {
+      king:	 "\u2654", #♔
+      queen: "\u2655", #♕
+      rook:  "\u2656", #♖
+      bishop:"\u2657", #♗
+      knight:"\u2658", #♘
+      pawn:  "\u2659"  #♙
+  },
+
+    :black => {
+      king:	 "\u265A", #♔
+      queen: "\u265B", #♕
+      rook:  "\u265C", #♖
+      bishop:"\u265D", #♗
+      knight:"\u265E", #♘
+      pawn:  "\u265F"  #♙
+    }
+  }
+
   attr_reader :color, :position
 
   def initialize(color, board, position)
@@ -9,6 +30,10 @@ class Piece
 
   def moves
     raise NotImplementedError
+  end
+
+  def display
+    PIECES[color][self.class.to_s.downcase.to_sym]
   end
 
   protected
