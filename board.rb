@@ -3,9 +3,12 @@ class Board
   SQUARES = {black: "  ".colorize(:background => :black),
     white: "  ".colorize(:background => :white)}
 
+  attr_reader :squares
+
   def initialize()
     @squares = Array.new(8) { Array.new(8) }
   end
+
 
   def display
     is_white = true
@@ -40,19 +43,24 @@ class Board
     puts "Piece cannot move to that location!"
   end
 
+  def size
+    @squares.length
+  end
+
   def in_check?(color)
     # 1. find position of king on board
     # 2. see if opposing piece can move to that position
   end
 
   def [](pos)
+    # p pos
     row, col = pos
-    @square[row][col]
+    @squares[row][col]
   end
 
   def []=(pos, piece)
     row, col = pos
-    @square[row][col] = piece
+    @squares[row][col] = piece
   end
 
 end
