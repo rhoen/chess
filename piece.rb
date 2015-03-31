@@ -39,9 +39,9 @@ class Piece
     str.colorize(piece_color)
   end
 
-  def moves
-    raise NotImplementedError
-  end
+  # def moves
+  #   raise NotImplementedError
+  # end
 
   def display
     colorize_piece(PIECES[color][self.class.to_s.downcase.to_sym] + " ")
