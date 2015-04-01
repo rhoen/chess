@@ -15,6 +15,7 @@ class HumanPlayer < Player
   end
 
   def parse(input)
+    return input if input.downcase == "save"
     from_pos, to_pos = input.split(" ")
     from_pos = [num_to_row(from_pos[1]), char_to_col(from_pos[0])]
     to_pos = [num_to_row(to_pos[1]), char_to_col(to_pos[0])]
