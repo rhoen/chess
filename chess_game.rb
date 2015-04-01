@@ -2,6 +2,7 @@ require 'dispel'
 require_relative 'board'
 require_relative 'chess_helper'
 require 'yaml'
+require_relative 'error'
 
 class ChessGame
 
@@ -14,18 +15,28 @@ class ChessGame
     YAML.load_file(file_path_name)
   end
 
-  def initialize(board = YAML.load_file('starting_positions.yaml'))
+  def self.default
+    YAML.load_file('starting_positions.yaml'
+  end
+
+  def initialize(board, white_player, black_player)
     @board = board
     @turn = :white
+    @white_player = white_player
+    @black_player = black_player
   end
 
   def run
     until @board.checkmate?(@turn)
       puts @board.render
       begin
-        from, to = get_user_input
+        from, to = get_player_input
+        raise NotYourPieceError if @board[from].color != @turn
         @board.move(from, to)
-      rescue
+      rescue NotYourPieceError => e
+        puts "That is not your piece."
+        retry
+      rescue MoveNotAvailableError => e
         retry
       end
       @turn = opposite_color(@turn)
@@ -36,25 +47,12 @@ class ChessGame
     puts "Checkmate!"
   end
 
-  def get_user_input
-    puts "Enter move from, move to: "
-    input = gets.chomp
-    parse(input)
+  def get_player_input
+    current_player.play_turn
   end
 
-  def parse(input)
-    from_pos, to_pos = input.split(" ")
-    from_pos = [num_to_row(from_pos[1]), char_to_col(from_pos[0])]
-    to_pos = [num_to_row(to_pos[1]), char_to_col(to_pos[0])]
-    [from_pos, to_pos]
-  end
-
-  def char_to_col(char)
-    char.downcase.ord - "a".ord
-  end
-
-  def num_to_row(num)
-    8 - num.to_i
+  def current_player
+    @turn == :white ? @white_player : @black_player
   end
 
   def load(file_path_name)
