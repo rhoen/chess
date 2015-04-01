@@ -63,18 +63,13 @@ class Board
 
   def in_check?(color)
     king = find_king(color)
-    opposing_pieces = find_opposing_pieces(color)
-
-    all_available_moves = []
-    opposing_pieces.each do |piece|
-      all_available_moves.concat(piece.moves)
-    end
-
-    all_available_moves.include?(king.position)
+    opposing_pieces = find_all_pieces(opposite_color(color))
+    all_available_moves(opposing_pieces).include?(king.position)
   end
 
   def checkmate?(color)
-    in_check?(color) &&
+    player_pieces = find_all_pieces(color)
+    in_check?(color) && all_available_moves(player_pieces).empty?
   end
 
   def find_king(color)
@@ -83,12 +78,17 @@ class Board
     end
   end
 
-  def all_available_moves
+  def all_available_moves(pieces)
+    all_available_moves = []
+    pieces.each do |piece|
+      all_available_moves.concat(piece.valid_moves)
+    end
+    all_available_moves
   end
 
-  def find_opposing_pieces(color)
+  def find_all_pieces(color)
     @squares.flatten.select do |square|
-      square.color == opposite_color(color) unless square.nil?
+      square.color == color unless square.nil?
     end
   end
 
