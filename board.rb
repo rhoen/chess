@@ -1,3 +1,4 @@
+require 'byebug'
 require "colorize"
 require_relative "stepping_piece"
 require_relative "sliding_piece"
@@ -9,9 +10,7 @@ class Board
 
   def initialize()
     @squares = Array.new(8) { Array.new(8) }
-    @colors = [:white, :black]
     @turn = :white
-    self.place_pieces
   end
 
   def square_color(is_white)
@@ -39,6 +38,7 @@ class Board
       display_string << "\n"
     end
 
+    display_string << "\n"
     display_string
   end
 
@@ -60,8 +60,20 @@ class Board
   end
 
   def in_check?(color)
-    # 1. find position of king on board
-    # 2. see if opposing piece can move to that position
+    king = @squares.flatten.find do |piece|
+      piece.is_a?(King) && piece.color == color
+    end
+
+    opposing_pieces = @squares.flatten.select do |square|
+      square.color == opposite_color(color) unless square.nil?
+    end
+
+    all_available_moves = []
+    opposing_pieces.each do |piece|
+      all_available_moves.concat(piece.moves)
+    end
+
+    all_available_moves.include?(king.position)
   end
 
   def [](pos)
@@ -75,12 +87,8 @@ class Board
     @squares[row][col] = piece
   end
 
-  def place_pieces
-
-  end
-
-  def next_turn
-
+  def opposite_color(color)
+    color == :white ? :black : :white
   end
 
 end

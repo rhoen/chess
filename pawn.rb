@@ -14,7 +14,7 @@ class Pawn < SteppingPiece
   #TODO maybe refactor moves methods using procs?
   def moves
     available_moves = []
-
+    
     deltas.each do |delta|
       break if !empty_square?(next_move(delta))
       unless off_board?(next_move(delta))
