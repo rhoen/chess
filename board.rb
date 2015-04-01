@@ -55,7 +55,14 @@ class Board
     puts "Piece cannot move to that location!"
   end
 
-
+  def move!(start, end_pos)
+    piece = self[start]
+    available_moves = self[start].moves
+    raise if !available_moves.include?(end_pos)
+    piece.move_to(end_pos)
+  rescue
+    puts "Piece cannot move to that location!"
+  end
 
   def size
     @squares.length
@@ -78,6 +85,7 @@ class Board
     end
   end
 
+  #infinite loop
   def all_available_moves(pieces)
     all_available_moves = []
     pieces.each do |piece|

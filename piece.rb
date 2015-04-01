@@ -67,7 +67,7 @@ class Piece
   end
 
   def valid_moves
-    moves.reject { |move| move_into_check?(move) }
+    moves!.reject { |move| move_into_check?(move) }
   end
 
   def dup_with_board(board)
