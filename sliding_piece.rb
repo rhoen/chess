@@ -8,11 +8,10 @@ class SlidingPiece < Piece
   #refactor!!!???
   def moves
     available_moves = []
-
     move_dirs.each do |dir|
       last_move = self.position
       loop do
-        next_move = [last_move[0] + dir[0], last_move[1] + dir[1]]
+        next_move = last_move.zip_sum(dir)
         break if off_board?(next_move) || !available_square?(next_move)
         break if @board[last_move] && opponent?(@board[last_move])
         available_moves << next_move

@@ -1,6 +1,8 @@
 require 'byebug'
+require_relative 'array_helper'
 
 class Piece
+  include ArrayHelper
 
   PIECES = {
     :white => {
