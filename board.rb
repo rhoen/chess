@@ -48,12 +48,14 @@ class Board
 
   def move(start, end_pos)
     piece = self[start]
-    available_moves = self[start].moves
+    available_moves = self[start].valid_moves
     raise if !available_moves.include?(end_pos)
     piece.move_to(end_pos)
   rescue
     puts "Piece cannot move to that location!"
   end
+
+
 
   def size
     @squares.length
@@ -61,7 +63,6 @@ class Board
 
   def in_check?(color)
     king = find_king(color)
-
     opposing_pieces = find_opposing_pieces(color)
 
     all_available_moves = []
@@ -72,10 +73,17 @@ class Board
     all_available_moves.include?(king.position)
   end
 
+  def checkmate?(color)
+    in_check?(color) &&
+  end
+
   def find_king(color)
     @squares.flatten.find do |piece|
       piece.is_a?(King) && piece.color == color
     end
+  end
+
+  def all_available_moves
   end
 
   def find_opposing_pieces(color)
