@@ -60,7 +60,18 @@ class Piece
     self.position = end_pos
   end
 
-  def move_into_check?()
+  def move_into_check?(pos)
+    new_board = @board.dup
+    new_board.move(self.position, pos)
+    new_board.in_check?(self.color)
+  end
+
+  def valid_moves
+    moves.reject { |move| move_into_check?(move) }
+  end
+
+  def dup_with_board(board)
+    self.class.new(self.color, board, self.position)
   end
 
 end

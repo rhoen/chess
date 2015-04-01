@@ -7,7 +7,6 @@ class ChessGame
   def self.play
   end
 
-
   def initialize(board = YAML.load_file('starting_positions.yaml'))
     @board = board
   end
@@ -15,7 +14,6 @@ class ChessGame
   def run
     puts @board.render
   end
-
 
 end
 

@@ -99,4 +99,16 @@ class Board
     color == :white ? :black : :white
   end
 
+  def dup
+    new_board = Board.new
+
+    pieces = @squares.flatten.select {|piece| piece}
+
+    pieces.each do |piece|
+      new_board[piece.position] = piece.dup_with_board(new_board)
+    end
+
+    new_board
+  end
+
 end
