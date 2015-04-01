@@ -30,6 +30,10 @@ class Bishop < SlidingPiece
     DIAGONAL_DIRS
   end
 
+  def character
+    {white: "♗", black: "♝"}
+  end
+
 end
 
 class Rook < SlidingPiece
@@ -38,12 +42,20 @@ class Rook < SlidingPiece
     ORTHOGONAL_DIRS
   end
 
+  def character
+    {white: "♖", black: "♜"}
+  end
+
 end
 
 class Queen < SlidingPiece
 
   def move_dirs
     DIAGONAL_DIRS + ORTHOGONAL_DIRS
+  end
+
+  def character
+    {white: "♕", black: "♛"}
   end
 
 end

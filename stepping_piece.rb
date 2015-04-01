@@ -18,15 +18,27 @@ class SteppingPiece < Piece
 end
 
 class Knight < SteppingPiece
+
   def deltas
     [[1, 2], [1, -2], [-1, -2], [-1, 2],
      [2, 1], [-2, 1], [-2, -1], [2, -1]]
   end
+
+  def character
+    {white: "♘", black: "♞"}
+  end
+
 end
 
 class King < SteppingPiece
+
   def deltas
     [[1, 1], [1, -1], [-1, -1], [-1, 1],
      [1, 0], [0,  1], [-1,  0], [0, -1]]
   end
+
+  def character
+    {white: "♔", black: "♚"}
+  end
+
 end

@@ -1,27 +1,8 @@
+#coding: utf-8
+
 require_relative 'array_helper'
 
 class Piece
-  include ArrayHelper
-
-  PIECES = {
-    :white => {
-      king:	 "\u2654", #♔
-      queen: "\u2655", #♕
-      rook:  "\u2656", #♖
-      bishop:"\u2657", #♗
-      knight:"\u2658", #♘
-      pawn:  "\u2659"  #♙
-  },
-
-    :black => {
-      king:	 "\u265A", #♔
-      queen: "\u265B", #♕
-      rook:  "\u265C", #♖
-      bishop:"\u265D", #♗
-      knight:"\u265E", #♘
-      pawn:  "\u265F"  #♙
-    }
-  }
 
   attr_accessor :color, :position, :board
 
@@ -31,8 +12,13 @@ class Piece
     @position = position
   end
 
+  #move into board class
   def on_board?(pos)
     pos.all? { |el| el.between?(0, @board.size - 1) }
+  end
+
+  def empty_square?(next_move)
+    @board[next_move].nil?
   end
 
   def opponent?(other_piece)
@@ -42,6 +28,7 @@ class Piece
   def available_square?(pos)
     on_board?(pos) && (@board[pos].nil? || @board[pos].color != self.color)
   end
+  #end move into board class
 
   def move_to(end_pos)
     @board[end_pos] = self
@@ -72,7 +59,7 @@ class Piece
   end
 
   def render
-    colorize_piece(PIECES[color][self.class.to_s.downcase.to_sym] + " ")
+    colorize_piece(character[self.color] + " ")
   end
 
 end

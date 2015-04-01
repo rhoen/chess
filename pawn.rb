@@ -16,24 +16,30 @@ class Pawn < SteppingPiece
     available_moves = []
 
     deltas.each do |delta|
-      break if !empty_square?(next_move(delta))
-      unless off_board?(next_move(delta))
-        available_moves << next_move(delta)
+      next_move = self.position.zip_sum(delta)
+      break unless empty_square?(next_move)
+      if on_board?(next_move)
+        available_moves << next_move
       end
     end
+
+    p available_moves
 
     available_moves + capture_moves
   end
 
   def deltas
-    deltas = {}
+
     if on_original_square?
-      deltas = {:white => [[-1, 0], [-2, 0]],
-                    :black => [[1,0], [2, 0]]}
+      deltas = {
+        :white => [[-1, 0], [-2, 0]],
+        :black => [[1,0], [2, 0]]
+      }
     else
       deltas = {:white => [[-1, 0]],
                 :black => [[1,0]]}
     end
+
     deltas[self.color]
   end
 
@@ -43,15 +49,16 @@ class Pawn < SteppingPiece
     available_moves = []
     capture_deltas[self.color].each do |delta|
       next_move = self.position.zip_sum(delta)
-      available_moves << next_move if @board[next_move] &&
-                                     opponent?(@board[next_move])
+      if @board[next_move] && opponent?(@board[next_move])
+        available_moves << next_move
+      end
     end
 
     available_moves
   end
 
-  def empty_square?(next_move)
-    @board[next_move].nil?
+  def character
+    {white: "♙", black: "♟"}
   end
 
 end

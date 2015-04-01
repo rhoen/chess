@@ -130,4 +130,8 @@ class Board
     new_board
   end
 
+  def save
+    File.write('saved_game.yaml', self.to_yaml)
+  end
+
 end
