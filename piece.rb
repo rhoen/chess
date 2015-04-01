@@ -1,4 +1,3 @@
-require 'byebug'
 require_relative 'array_helper'
 
 class Piece
@@ -32,20 +31,8 @@ class Piece
     @position = position
   end
 
-  def piece_color
-    @color == :white ? :black : :black
-  end
-
-  def colorize_piece(str)
-    str.colorize(piece_color)
-  end
-
-  def render
-    colorize_piece(PIECES[color][self.class.to_s.downcase.to_sym] + " ")
-  end
-
-  def off_board?(pos)
-    !pos.all? { |el| el.between?(0, @board.size - 1) }
+  def on_board?(pos)
+    pos.all? { |el| el.between?(0, @board.size - 1) }
   end
 
   def opponent?(other_piece)
@@ -53,7 +40,7 @@ class Piece
   end
 
   def available_square?(pos)
-    @board[pos].nil? || @board[pos].color != self.color
+    on_board?(pos) && (@board[pos].nil? || @board[pos].color != self.color)
   end
 
   def move_to(end_pos)
@@ -74,6 +61,18 @@ class Piece
 
   def dup_with_board(board)
     self.class.new(self.color, board, self.position)
+  end
+
+  def piece_color
+    @color == :white ? :black : :black
+  end
+
+  def colorize_piece(str)
+    str.colorize(piece_color)
+  end
+
+  def render
+    colorize_piece(PIECES[color][self.class.to_s.downcase.to_sym] + " ")
   end
 
 end

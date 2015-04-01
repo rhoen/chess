@@ -4,15 +4,17 @@ class SteppingPiece < Piece
 
   def moves
     available_moves = []
+
     deltas.each do |delta|
       next_move = self.position.zip_sum(delta)
-      unless off_board?(next_move) || !available_square?(next_move)
+      if available_square?(next_move)
         available_moves << next_move
       end
     end
 
     available_moves
   end
+
 end
 
 class Knight < SteppingPiece
