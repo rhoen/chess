@@ -3,14 +3,15 @@ require "colorize"
 require_relative "stepping_piece"
 require_relative "sliding_piece"
 require_relative "pawn"
+require_relative 'chess_helper'
 
 class Board
+  include ChessHelper
 
-  attr_reader :squares, :turn
+  attr_reader :squares
 
   def initialize()
     @squares = Array.new(8) { Array.new(8) }
-    @turn = :white
   end
 
   def square_color(is_white)
@@ -39,7 +40,7 @@ class Board
       display_string << "\n"
     end
 
-    display_string << " A B C D E F G H\n"
+    display_string << " A B C D E F G H\n\n"
     display_string
   end
 
@@ -47,6 +48,7 @@ class Board
     string.colorize(:background => color)
   end
 
+  # refactor move and move! like all_available_moves
   def move(start, end_pos)
     piece = self[start]
     available_moves = self[start].valid_moves
@@ -54,6 +56,7 @@ class Board
     piece.move_to(end_pos)
   rescue
     puts "Piece cannot move to that location!"
+    raise
   end
 
   def move!(start, end_pos)
@@ -63,6 +66,7 @@ class Board
     piece.move_to(end_pos)
   rescue
     puts "Piece cannot move to that location!"
+    raise
   end
 
   def size
@@ -105,7 +109,6 @@ class Board
   end
 
   def [](pos)
-    # p pos
     row, col = pos
     @squares[row][col]
   end
@@ -113,10 +116,6 @@ class Board
   def []=(pos, piece)
     row, col = pos
     @squares[row][col] = piece
-  end
-
-  def opposite_color(color)
-    color == :white ? :black : :white
   end
 
   def dup

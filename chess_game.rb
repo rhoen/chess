@@ -1,8 +1,11 @@
 require 'dispel'
 require_relative 'board'
+require_relative 'chess_helper'
 require 'yaml'
 
 class ChessGame
+
+  include ChessHelper
 
   def self.play
   end
@@ -13,23 +16,30 @@ class ChessGame
 
   def initialize(board = YAML.load_file('starting_positions.yaml'))
     @board = board
+    @turn = :white
   end
 
   def run
-    until @board.checkmate?
+    until @board.checkmate?(@turn)
       puts @board.render
-      get_user_input
+      begin
+        from, to = get_user_input
+        @board.move(from, to)
+      rescue
+        retry
+      end
+      @turn = opposite_color(@turn)
     end
+
+    puts @board.render
+
+    puts "Checkmate!"
   end
 
   def get_user_input
     puts "Enter move from, move to: "
     input = gets.chomp
-    from, to = parse(input)
-    @board.move(from, to)
-  rescue e
-    puts e
-    retry
+    parse(input)
   end
 
   def parse(input)
@@ -44,7 +54,7 @@ class ChessGame
   end
 
   def num_to_row(num)
-    8 - num
+    8 - num.to_i
   end
 
   def load(file_path_name)
