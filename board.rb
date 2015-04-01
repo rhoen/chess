@@ -76,7 +76,7 @@ class Board
 
   def checkmate?(color)
     player_pieces = find_all_pieces(color)
-    in_check?(color) && all_available_moves(player_pieces).empty?
+    in_check?(color) && all_available_moves(player_pieces, :valid).empty?
   end
 
   def find_king(color)
@@ -85,11 +85,14 @@ class Board
     end
   end
 
-  #infinite loop
-  def all_available_moves(pieces)
+  def all_available_moves(pieces, validity = nil)
     all_available_moves = []
     pieces.each do |piece|
-      all_available_moves.concat(piece.valid_moves)
+      if validity == :valid
+        all_available_moves.concat(piece.valid_moves)
+      else
+        all_available_moves.concat(piece.moves)
+      end
     end
     all_available_moves
   end
