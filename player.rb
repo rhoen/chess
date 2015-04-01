@@ -59,7 +59,7 @@ class ComputerPlayer < Player
       moves.select! do |move|
         board[move].color == opposite_color(@color) if board[move]
       end
-      return [piece.position, moves.sample]
+      return [piece.position, moves.sample] unless moves.empty?
     end
 
     random_move(board)
