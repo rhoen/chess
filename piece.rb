@@ -22,7 +22,6 @@ class Piece
     }
   }
 
-
   attr_accessor :color, :position, :board
 
   def initialize(color, board, position)
@@ -38,10 +37,6 @@ class Piece
   def colorize_piece(str)
     str.colorize(piece_color)
   end
-
-  # def moves
-  #   raise NotImplementedError
-  # end
 
   def render
     colorize_piece(PIECES[color][self.class.to_s.downcase.to_sym] + " ")
@@ -63,6 +58,9 @@ class Piece
     @board[end_pos] = self
     @board[self.position] = nil
     self.position = end_pos
+  end
+
+  def move_into_check?()
   end
 
 end

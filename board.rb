@@ -60,13 +60,9 @@ class Board
   end
 
   def in_check?(color)
-    king = @squares.flatten.find do |piece|
-      piece.is_a?(King) && piece.color == color
-    end
+    king = find_king(color)
 
-    opposing_pieces = @squares.flatten.select do |square|
-      square.color == opposite_color(color) unless square.nil?
-    end
+    opposing_pieces = find_opposing_pieces(color)
 
     all_available_moves = []
     opposing_pieces.each do |piece|
@@ -74,6 +70,18 @@ class Board
     end
 
     all_available_moves.include?(king.position)
+  end
+
+  def find_king(color)
+    @squares.flatten.find do |piece|
+      piece.is_a?(King) && piece.color == color
+    end
+  end
+
+  def find_opposing_pieces(color)
+    @squares.flatten.select do |square|
+      square.color == opposite_color(color) unless square.nil?
+    end
   end
 
   def [](pos)
