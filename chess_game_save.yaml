@@ -83,41 +83,45 @@ squares:
     color: :black
     board: *1
     position: *6
+  - 
   - !ruby/object:Pawn
     original_square: &7
-    - 1
-    - 5
-    color: :black
-    board: *1
-    position: *7
-  - !ruby/object:Pawn
-    original_square: &8
     - 1
     - 6
     color: :black
     board: *1
-    position: *8
+    position: *7
+  - 
+- - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
   - !ruby/object:Pawn
-    original_square: &9
+    original_square:
     - 1
     - 7
     color: :black
     board: *1
-    position: *9
+    position:
+    - 2
+    - 7
 - - 
   - 
   - 
   - 
   - 
-  - 
-  - 
-  - 
-- - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - !ruby/object:Pawn
+    original_square:
+    - 1
+    - 5
+    color: :black
+    board: *1
+    position:
+    - 3
+    - 5
   - 
   - 
 - - 
@@ -139,61 +143,66 @@ squares:
 - - 
   - 
   - 
-  - 
+  - !ruby/object:Queen
+    color: :white
+    board: *1
+    position:
+    - 5
+    - 3
   - 
   - 
   - 
   - 
 - - !ruby/object:Pawn
-    original_square: &10
+    original_square: &8
     - 6
     - 0
     color: :white
     board: *1
+    position: *8
+  - !ruby/object:Pawn
+    original_square: &9
+    - 6
+    - 1
+    color: :white
+    board: *1
+    position: *9
+  - !ruby/object:Pawn
+    original_square: &10
+    - 6
+    - 2
+    color: :white
+    board: *1
     position: *10
+  - 
   - !ruby/object:Pawn
     original_square: &11
     - 6
-    - 1
+    - 4
     color: :white
     board: *1
     position: *11
   - !ruby/object:Pawn
     original_square: &12
     - 6
-    - 2
+    - 5
     color: :white
     board: *1
     position: *12
-  - 
   - !ruby/object:Pawn
     original_square: &13
     - 6
-    - 4
+    - 6
     color: :white
     board: *1
     position: *13
   - !ruby/object:Pawn
     original_square: &14
     - 6
-    - 5
-    color: :white
-    board: *1
-    position: *14
-  - !ruby/object:Pawn
-    original_square: &15
-    - 6
-    - 6
-    color: :white
-    board: *1
-    position: *15
-  - !ruby/object:Pawn
-    original_square: &16
-    - 6
     - 7
     color: :white
     board: *1
-    position: *16
+    position: *14
 - - !ruby/object:Rook
     color: :white
     board: *1
@@ -212,12 +221,7 @@ squares:
     position:
     - 7
     - 2
-  - !ruby/object:Queen
-    color: :white
-    board: *1
-    position:
-    - 7
-    - 3
+  - 
   - !ruby/object:King
     color: :white
     board: *1

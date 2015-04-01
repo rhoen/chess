@@ -1,4 +1,9 @@
+require_relative "chess_helper"
+
 class Player
+  include ChessHelper
+
+  attr_reader :color
 
   def initialize(color)
     @color = color
@@ -34,17 +39,30 @@ end
 
 class ComputerPlayer < Player
 
-  def play_turn
-    random_move
+  def play_turn(board)
+    smarter_move(board)
   end
 
   def random_move(board)
     piece = board.find_all_pieces(self.color).sample
-    move = board.all_available_move([piece], :valid)
-    raise if move.empty?
+    moves = board.all_available_moves([piece], :valid)
+    raise if moves.empty?
     [piece.position, moves.sample]
   rescue
     retry
+  end
+
+  def smarter_move(board)
+    pieces = board.find_all_pieces(self.color)
+    pieces.each do |piece|
+      moves = board.all_available_moves([piece], :valid)
+      moves.select! do |move|
+        board[move].color == opposite_color(@color) if board[move]
+      end
+      return [piece.position, moves.sample]
+    end
+
+    random_move(board)
   end
 
 end

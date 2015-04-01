@@ -31,14 +31,13 @@ class ChessGame
     until @board.checkmate?(@turn)
       puts @board.render
       begin
-        input = get_player_input
+        input = get_player_input(@board)
         if input == "save"
           save
           next
         else
           from, to = input
         end
-
         raise EmptySquareError if @board[from].nil?
         raise NotYourPieceError if @board[from].color != @turn
         @board.move(from, to)
@@ -59,8 +58,8 @@ class ChessGame
     puts "Checkmate!"
   end
 
-  def get_player_input
-    current_player.play_turn
+  def get_player_input(board)
+    current_player.play_turn(board)
   end
 
   def current_player
