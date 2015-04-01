@@ -22,6 +22,7 @@ class Board
 
     display_string = "\n"
     @squares.each_with_index do |row, row_num|
+      display_string << (8 - row_num).to_s
       row.each_with_index do |piece, col_num|
 
         color = square_color(is_white)
@@ -38,7 +39,7 @@ class Board
       display_string << "\n"
     end
 
-    display_string << "\n"
+    display_string << " A B C D E F G H\n"
     display_string
   end
 

@@ -23,8 +23,6 @@ class Pawn < SteppingPiece
       end
     end
 
-    p available_moves
-
     available_moves + capture_moves
   end
 
