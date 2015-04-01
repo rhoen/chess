@@ -12,7 +12,7 @@ class Board
     is_white ? :white : :light_black
   end
 
-  def display
+  def render
     is_white = true
 
     display_string = "\n"
@@ -22,7 +22,7 @@ class Board
         color = square_color(is_white)
 
         if piece
-          display_string << colored_square(piece.display, color)
+          display_string << colored_square(piece.render, color)
         else
           display_string << colored_square("  ", color)
         end

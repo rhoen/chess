@@ -12,8 +12,7 @@ class ChessGame
 
   def run
     Dispel::Screen.open do |screen|
-      string = "Hello world"
-      screen.draw draw(string)
+      screen.draw draw(@board.render)
 
       Dispel::Keyboard.output do |key|
         case key
@@ -23,7 +22,7 @@ class ChessGame
         when :right then move_cursor(1, 0)
         when "q" then break
         end
-        screen.draw draw(string)
+        screen.draw draw(@board.render)
       end
     end
   end
@@ -37,4 +36,9 @@ class ChessGame
   end
 
 
+end
+
+if __FILE__ == $PROGRAM_NAME
+  game = ChessGame.new
+  game.run
 end

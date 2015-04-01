@@ -43,7 +43,7 @@ class Piece
   #   raise NotImplementedError
   # end
 
-  def display
+  def render
     colorize_piece(PIECES[color][self.class.to_s.downcase.to_sym] + " ")
   end
 
