@@ -13,18 +13,14 @@ class Pawn < SteppingPiece
 
   #TODO jumps over pieces and captures pieces in front,  very rude pawn
   def moves
-
     available_moves = []
 
     deltas.each do |delta|
-      next_move = [self.position[0] + delta[0], self.position[1] + delta[1]]
-      break if !empty_square?(next_move)
-      unless off_board?(next_move)
-        available_moves << next_move
+      break if !empty_square?(next_move(delta))
+      unless off_board?(next_move(delta))
+        available_moves << next_move(delta)
       end
     end
-
-
 
     available_moves + capture_moves
   end
@@ -46,9 +42,8 @@ class Pawn < SteppingPiece
                      :black => [[1,-1], [1, 1]]}
     available_moves = []
     capture_deltas[self.color].each do |delta|
-      next_move = [self.position[0] + delta[0], self.position[1] + delta[1]]
-      available_moves << next_move if @board[next_move] &&
-                                     opponent?(@board[next_move])
+      available_moves << next_move(delta) if @board[next_move(delta)] &&
+                                     opponent?(@board[next_move(delta)])
     end
 
     available_moves

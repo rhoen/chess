@@ -5,12 +5,16 @@ class SteppingPiece < Piece
   def moves
     available_moves = []
     deltas.each do |delta|
-      next_move = [self.position[0] + delta[0], self.position[1] + delta[1]]
-      unless off_board?(next_move) || !available_square?(next_move)
-        available_moves << next_move
+      unless off_board?(next_move(delta)) ||
+                    !available_square?(next_move(delta))
+        available_moves << next_move(delta)
       end
     end
     available_moves
+  end
+
+  def next_move(delta)
+    [self.position[0] + delta[0], self.position[1] + delta[1]]
   end
 
 end
