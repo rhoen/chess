@@ -79,7 +79,7 @@ end
 
 if __FILE__ == $PROGRAM_NAME
   p1 = HumanPlayer.new(:white)
-  p2 = HumanPlayer.new(:black)
+  p2 = ComputerPlayer.new(:black)
   board = ChessGame.default
   game = ChessGame.new(board, p1, p2)
 

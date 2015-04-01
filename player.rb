@@ -8,7 +8,7 @@ end
 
 class HumanPlayer < Player
 
-  def play_turn
+  def play_turn(board) #board is for computer, human can see render
     puts "Enter move from, move to: "
     input = gets.chomp
     parse(input)
@@ -33,5 +33,18 @@ class HumanPlayer < Player
 end
 
 class ComputerPlayer < Player
+
+  def play_turn
+    random_move
+  end
+
+  def random_move(board)
+    piece = board.find_all_pieces(self.color).sample
+    move = board.all_available_move([piece], :valid)
+    raise if move.empty?
+    [piece.position, moves.sample]
+  rescue
+    retry
+  end
 
 end
