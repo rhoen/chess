@@ -11,7 +11,7 @@ class Pawn < SteppingPiece
     @original_square == @position
   end
 
-  #TODO jumps over pieces and captures pieces in front,  very rude pawn
+  #TODO maybe refactor moves methods using procs?
   def moves
     available_moves = []
 

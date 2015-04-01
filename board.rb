@@ -1,11 +1,17 @@
 require "colorize"
+require_relative "stepping_piece"
+require_relative "sliding_piece"
+require_relative "pawn"
 
 class Board
 
-  attr_reader :squares
+  attr_reader :squares, :turn
 
   def initialize()
     @squares = Array.new(8) { Array.new(8) }
+    @colors = [:white, :black]
+    @turn = :white
+    self.place_pieces
   end
 
   def square_color(is_white)
@@ -35,7 +41,6 @@ class Board
 
     display_string
   end
-
 
   def colored_square(string, color)
     string.colorize(:background => color)
@@ -68,6 +73,14 @@ class Board
   def []=(pos, piece)
     row, col = pos
     @squares[row][col] = piece
+  end
+
+  def place_pieces
+
+  end
+
+  def next_turn
+
   end
 
 end
