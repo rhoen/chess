@@ -11,6 +11,8 @@ class Pawn < SteppingPiece
     @original_square == @position
   end
 
+
+  #TODO jumps over pieces and captures pieces in front,  very rude pawn
   def moves
     available_moves = super
 
@@ -19,7 +21,7 @@ class Pawn < SteppingPiece
 
     capture_delta[self.color].each do |delta|
       next_move = [self.position[0] + delta[0], self.position[1] + delta[1]]
-      available_moves << next_move if @board[pos] &&
+      available_moves << next_move if @board[next_move] &&
                                       opponent?(@board[next_move])
     end
 

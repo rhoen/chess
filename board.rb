@@ -42,7 +42,10 @@ class Board
   end
 
   def move(start, end_pos)
-    raise
+    piece = self[start]
+    available_moves = self[start].moves
+    raise if !available_moves.include?(end_pos)
+    piece.move_to(end_pos)
   rescue
     puts "Piece cannot move to that location!"
   end

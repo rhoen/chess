@@ -59,4 +59,10 @@ class Piece
     @board[pos].nil? || @board[pos].color != self.color
   end
 
+  def move_to(end_pos)
+    @board[end_pos] = self
+    @board[self.position] = nil
+    self.position = end_pos
+  end
+
 end
