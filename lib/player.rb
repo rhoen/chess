@@ -10,7 +10,7 @@ class Player
   end
 
   def available_move_count
-    
+
   end
 
 end
@@ -60,13 +60,30 @@ class ComputerPlayer < Player
     pieces = board.find_all_pieces(self.color)
     pieces.each do |piece|
       moves = board.all_available_moves([piece], :valid)
-      moves.select! do |move|
-        board[move].color == opposite_color(@color) if board[move]
-      end
-      return [piece.position, moves.sample] unless moves.empty?
+      captures = capture_moves(moves, board)
+      return [piece.position, moves.sample] unless captures.empty?
+      # safety = safe_moves(moves)
+
     end
 
     random_move(board)
+  end
+
+  def capture_moves(moves, board)
+    moves.select do |move|
+      board[move].color == opposite_color(color) if board[move]
+    end
+  end
+
+  def run_away_moves
+
+  end
+
+  def safe_moves(moves)
+    moves.select! do |move|
+      opposing_pieces = find_all_pieces(opposite_color(color))
+      board[move]
+    end
   end
 
 end

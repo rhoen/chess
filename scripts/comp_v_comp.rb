@@ -2,7 +2,7 @@ require_relative "../chess_game"
 white_wins = 0
 black_wins = 0
 draws = 0
-1.times do
+10.times do
   p1 = ComputerPlayer.new(:white)
   p2 = ComputerPlayer.new(:black)
   board = ChessGame.default

@@ -1,28 +1,20 @@
 --- &1 !ruby/object:Board
-moves_since_capture: 101
+moves_since_capture: 24
 squares:
 - - 
   - 
   - 
   - 
   - 
-  - 
-  - 
-  - 
-- - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-- - !ruby/object:King
-    color: :white
+  - !ruby/object:Bishop
+    color: :black
     board: *1
     position:
-    - 2
     - 0
+    - 5
+  - 
+  - 
+- - 
   - 
   - 
   - 
@@ -34,40 +26,73 @@ squares:
   - 
   - 
   - 
+  - 
+  - 
+  - 
+  - 
+- - 
   - !ruby/object:King
     color: :black
     board: *1
     position:
     - 3
-    - 4
-  - 
-  - 
-  - 
-- - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-- - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-- - 
-  - 
+    - 1
   - 
   - !ruby/object:Bishop
     color: :black
     board: *1
     position:
-    - 6
     - 3
+    - 3
+  - 
+  - 
+  - 
+  - 
+- - !ruby/object:Knight
+    color: :black
+    board: *1
+    position:
+    - 4
+    - 0
+  - 
+  - 
+  - 
+  - 
+  - !ruby/object:Rook
+    color: :black
+    board: *1
+    position:
+    - 4
+    - 5
+  - 
+  - 
+- - !ruby/object:Queen
+    color: :black
+    board: *1
+    position:
+    - 5
+    - 0
+  - 
+  - 
+  - 
+  - !ruby/object:Knight
+    color: :black
+    board: *1
+    position:
+    - 5
+    - 4
+  - 
+  - 
+  - !ruby/object:King
+    color: :white
+    board: *1
+    position:
+    - 5
+    - 7
+- - 
+  - 
+  - 
+  - 
   - 
   - 
   - 
@@ -78,13 +103,5 @@ squares:
   - 
   - 
   - 
-  - !ruby/object:Pawn
-    original_square:
-    - 1
-    - 7
-    color: :black
-    board: *1
-    position:
-    - 7
-    - 6
+  - 
   - 

@@ -110,6 +110,14 @@ class Board
     end
   end
 
+  def fortressed?(color)
+    if all_available_moves(find_all_pieces(color), :valid).count == 0
+      true
+    else
+      false
+    end
+  end
+
   def [](pos)
     row, col = pos
     @squares[row][col]

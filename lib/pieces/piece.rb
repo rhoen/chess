@@ -52,6 +52,12 @@ class Piece
     moves.reject { |move| move_into_check?(move) }
   end
 
+  def capture_moves
+    moves.select do |move|
+      @board[move].class == Piece
+    end
+  end
+
   def dup_with_board(board)
     self.class.new(self.color, board, self.position)
   end

@@ -68,6 +68,7 @@ class ChessGame
 
   def draw?
     return true if @board.moves_since_capture > 100
+    return true if @board.fortressed?(@turn)
   end
 
   def get_player_input(board)
