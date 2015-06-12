@@ -1,4 +1,4 @@
-require_relative "chess_game"
+require_relative "../chess_game"
 white_wins = 0
 black_wins = 0
 draws = 0
