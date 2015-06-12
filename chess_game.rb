@@ -1,9 +1,9 @@
 # require 'dispel'
-require_relative 'board'
-require_relative 'chess_helper'
+require_relative 'lib/board'
+require_relative 'lib/chess_helper'
 require 'yaml'
-require_relative 'error'
-require_relative 'player'
+require_relative 'util/error'
+require_relative 'lib/player'
 
 class ChessGame
 

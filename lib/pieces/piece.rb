@@ -1,6 +1,6 @@
 #coding: utf-8
 
-require_relative 'array_helper'
+require_relative '../array_helper'
 
 class Piece
 
