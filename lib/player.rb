@@ -3,7 +3,7 @@ require_relative "chess_helper"
 class Player
   include ChessHelper
 
-  attr_reader :color
+  attr_reader :color, :available_move_count
 
   def initialize(color)
     @color = color
