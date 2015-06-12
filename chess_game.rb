@@ -60,9 +60,9 @@ class ChessGame
 
     puts "Checkmate!"
     if draw?
-      return draw?
+      return :draw
     else
-      return opposite_color(@turn)
+      return @turn
     end
   end
 
