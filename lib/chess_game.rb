@@ -1,4 +1,4 @@
-require 'dispel'
+# require 'dispel'
 require_relative 'board'
 require_relative 'chess_helper'
 require 'yaml'

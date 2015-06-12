@@ -1,11 +1,7 @@
 GEM
   specs:
-    curses (1.0.1)
-    dispel (0.0.7)
-      curses
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
-  dispel
