@@ -18,7 +18,6 @@ class Piece
   end
 
   def empty_square?(next_move)
-    byebug
     @board[next_move].nil?
   end
 
