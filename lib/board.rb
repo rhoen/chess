@@ -8,12 +8,13 @@ require_relative 'chess_helper'
 class Board
   include ChessHelper
 
-  attr_reader :squares, :moves_since_capture
-
+  attr_reader :squares
+  attr_accessor :moves_since_capture
   def initialize()
     @squares = Array.new(8) { Array.new(8) }
     @moves_since_capture = 0
   end
+
 
   def square_color(is_white)
     is_white ? :white : :light_black
