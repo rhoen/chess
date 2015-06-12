@@ -31,6 +31,12 @@ class Piece
   #end move into board class
 
   def move_to(end_pos)
+    if @board[end_pos].nil?
+      @board.moves_since_capture += 1
+    else
+      @board.moves_since_capture = 0
+    end
+
     @board[end_pos] = self
     @board[self.position] = nil
     self.position = end_pos

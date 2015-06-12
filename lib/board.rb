@@ -12,6 +12,7 @@ class Board
 
   def initialize()
     @squares = Array.new(8) { Array.new(8) }
+    @moves_since_capture = 0
   end
 
   def square_color(is_white)

@@ -25,12 +25,12 @@ class ChessGame
     @turn = :white
     @white_player = white_player
     @black_player = black_player
-    @moves_since_capture = 0
   end
 
   def run
     until @board.checkmate?(@turn)
       puts @board.render
+      @board.save
       break if draw?
       begin
         input = get_player_input(@board)
@@ -52,7 +52,6 @@ class ChessGame
       rescue MoveNotAvailableError => e
         retry
       end
-      @moves_since_capture += 1
       @turn = opposite_color(@turn)
     end
 
@@ -67,8 +66,7 @@ class ChessGame
   end
 
   def draw?
-    return true if @moves_since_capture > 100
-    return true if
+    return true if @board.moves_since_capture > 100
   end
 
   def get_player_input(board)

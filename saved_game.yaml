@@ -1,0 +1,126 @@
+--- &1 !ruby/object:Board
+squares:
+- - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+- - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+- - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+- - 
+  - 
+  - !ruby/object:Pawn
+    original_square:
+    - 6
+    - 1
+    color: :white
+    board: *1
+    position:
+    - 3
+    - 2
+  - 
+  - 
+  - 
+  - 
+  - !ruby/object:King
+    color: :black
+    board: *1
+    position:
+    - 3
+    - 7
+- - !ruby/object:Pawn
+    original_square:
+    - 6
+    - 0
+    color: :white
+    board: *1
+    position:
+    - 4
+    - 0
+  - 
+  - !ruby/object:Pawn
+    original_square:
+    - 6
+    - 2
+    color: :white
+    board: *1
+    position:
+    - 4
+    - 2
+  - 
+  - 
+  - 
+  - 
+  - 
+- - 
+  - 
+  - 
+  - !ruby/object:King
+    color: :white
+    board: *1
+    position:
+    - 5
+    - 3
+  - 
+  - 
+  - 
+  - 
+- - 
+  - !ruby/object:Queen
+    color: :white
+    board: *1
+    position:
+    - 6
+    - 1
+  - 
+  - !ruby/object:Knight
+    color: :white
+    board: *1
+    position:
+    - 6
+    - 3
+  - 
+  - !ruby/object:Pawn
+    original_square: &2
+    - 6
+    - 5
+    color: :white
+    board: *1
+    position: *2
+  - 
+  - 
+- - !ruby/object:Rook
+    color: :white
+    board: *1
+    position:
+    - 7
+    - 0
+  - 
+  - !ruby/object:Bishop
+    color: :white
+    board: *1
+    position:
+    - 7
+    - 2
+  - 
+  - 
+  - 
+  - 
+  - 
