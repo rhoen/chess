@@ -9,6 +9,10 @@ class Player
     @color = color
   end
 
+  def available_move_count
+    
+  end
+
 end
 
 class HumanPlayer < Player
