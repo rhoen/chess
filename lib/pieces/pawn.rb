@@ -17,10 +17,9 @@ class Pawn < SteppingPiece
 
     deltas.each do |delta|
       next_move = self.position.zip_sum(delta)
+      break unless on_board?(next_move)
       break unless empty_square?(next_move)
-      if on_board?(next_move)
-        available_moves << next_move
-      end
+      available_moves << next_move
     end
 
     available_moves + capture_moves
@@ -47,6 +46,7 @@ class Pawn < SteppingPiece
     available_moves = []
     capture_deltas[self.color].each do |delta|
       next_move = self.position.zip_sum(delta)
+      break unless on_board?(next_move)
       if @board[next_move] && opponent?(@board[next_move])
         available_moves << next_move
       end

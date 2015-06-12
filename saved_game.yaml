@@ -1,5 +1,5 @@
 --- &1 !ruby/object:Board
-moves_since_capture: 3
+moves_since_capture: 5
 squares:
 - - 
   - 
@@ -62,6 +62,19 @@ squares:
 - - 
   - 
   - 
+  - !ruby/object:King
+    color: :white
+    board: *1
+    position:
+    - 5
+    - 3
+  - 
+  - 
+  - 
+  - 
+- - 
+  - 
+  - 
   - 
   - 
   - 
@@ -70,12 +83,7 @@ squares:
 - - 
   - 
   - 
-  - !ruby/object:King
-    color: :white
-    board: *1
-    position:
-    - 6
-    - 3
+  - 
   - 
   - !ruby/object:Pawn
     original_square:
@@ -84,15 +92,7 @@ squares:
     color: :black
     board: *1
     position:
-    - 6
+    - 7
     - 5
-  - 
-  - 
-- - 
-  - 
-  - 
-  - 
-  - 
-  - 
   - 
   - 
