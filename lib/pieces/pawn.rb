@@ -2,8 +2,8 @@ require_relative "stepping_piece"
 
 class Pawn < SteppingPiece
 
-  def initialize(color, board, position)
-    @original_square = position
+  def initialize(color, board, position, original_square = position)
+    @original_square = original_square
     super
   end
 
@@ -57,6 +57,10 @@ class Pawn < SteppingPiece
 
   def character
     {white: "♙", black: "♟"}
+  end
+
+  def dup_with_board(board)
+    self.class.new(self.color, board, self.position, @original_square)
   end
 
 end

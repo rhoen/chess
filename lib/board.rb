@@ -53,6 +53,7 @@ class Board
   # refactor move and move! like all_available_moves
   def move(start, end_pos)
     piece = self[start]
+    byebug
     available_moves = self[start].valid_moves
     raise MoveNotAvailableError if !available_moves.include?(end_pos)
     piece.move_to(end_pos)

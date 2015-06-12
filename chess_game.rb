@@ -17,7 +17,7 @@ class ChessGame
   end
 
   def self.default
-    YAML.load_file('starting_positions.yaml')
+    YAML.load_file('game_saves/starting_positions.yaml')
   end
 
   def initialize(board, white_player, black_player)
@@ -30,6 +30,7 @@ class ChessGame
   def run
     until @board.checkmate?(@turn)
       puts @board.render
+      puts @turn.to_s + "'s move"
       @board.save
       break if draw?
       begin
@@ -78,7 +79,7 @@ class ChessGame
   end
 
   def save
-    File.write("chess_game_save.yaml", @board.to_yaml)
+    File.write("game_saves/chess_game_save.yaml", @board.to_yaml)
   end
 
   def load(file_path_name)

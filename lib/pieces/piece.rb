@@ -6,7 +6,7 @@ class Piece
 
   attr_accessor :color, :position, :board
 
-  def initialize(color, board, position)
+  def initialize(color, board, position, original_square = position)
     @color = color
     @board = board
     @position = position
@@ -18,6 +18,7 @@ class Piece
   end
 
   def empty_square?(next_move)
+    byebug
     @board[next_move].nil?
   end
 
