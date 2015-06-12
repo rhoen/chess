@@ -8,7 +8,7 @@ require_relative 'chess_helper'
 class Board
   include ChessHelper
 
-  attr_reader :squares
+  attr_reader :squares, :moves_since_capture
 
   def initialize()
     @squares = Array.new(8) { Array.new(8) }
