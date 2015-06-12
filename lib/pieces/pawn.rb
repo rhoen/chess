@@ -63,4 +63,21 @@ class Pawn < SteppingPiece
     self.class.new(self.color, board, self.position, @original_square)
   end
 
+  def move_to(end_pos)
+    if @board[end_pos].nil?
+      @board.moves_since_capture += 1
+    else
+      @board.moves_since_capture = 0
+    end
+    if end_pos[0] == 0 || end_pos[0] == 7
+      promote(end_pos)
+    end
+    @board[self.position] = nil
+    self.position = end_pos
+  end
+
+  def promote(pos)
+    @board[pos] = Queen.new(self.color, @board, pos)
+  end
+
 end
