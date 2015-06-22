@@ -1,5 +1,11 @@
 #Chess
 The code within contains logic for each individual chess piece as well as the gameplay logic for the game of chess. Player code allows for human players to be instantiated or computer players with basic AI.
+
+After downloading repo running the following code in the console will set up a game between a human player and computer:
+```
+ruby chess_game
+```
+The "scripts/play_saved_game.rb" file will load the autosaved game file that is updated after every turn. 
 ##ChessGame
 The ChessGame class is instantiated with a board, white player and black player. The run method is a simple loop that gets player input, calls move on the board, and checks to see if the game is over. Run will break out of the loop in the even of checkmate or a draw.
 
@@ -29,4 +35,4 @@ A stepping piece has a very specific set of move deltas that it can 'teleport' o
 ####Knight
 The knight moves in the classic 'L' shape.
 ####King
-The king can move in a single square in any direction. 
+The king can move in a single square in any direction.

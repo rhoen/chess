@@ -80,7 +80,7 @@ class ChessGame
   end
 
   def save
-    File.write("game_saves/chess_game_save.yaml", @board.to_yaml)
+    File.write("game_saves/custom_game_save.yaml", @board.to_yaml)
   end
 
   def load(file_path_name)

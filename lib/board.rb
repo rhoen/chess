@@ -141,7 +141,7 @@ class Board
   end
 
   def save
-    File.write('saved_game.yaml', self.to_yaml)
+    File.write('game_saves/auto_saved_game.yaml', self.to_yaml)
   end
 
 end
