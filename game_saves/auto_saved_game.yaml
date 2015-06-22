@@ -104,6 +104,22 @@ squares:
   - 
   - 
   - 
+  - !ruby/object:Pawn
+    original_square:
+    - 1
+    - 5
+    color: :black
+    board: *1
+    position:
+    - 2
+    - 5
+  - 
+  - 
+- - 
+  - 
+  - 
+  - 
+  - 
   - 
   - 
   - 
@@ -115,15 +131,15 @@ squares:
   - 
   - 
   - 
-- - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-- - 
+- - !ruby/object:Pawn
+    original_square:
+    - 6
+    - 0
+    color: :white
+    board: *1
+    position:
+    - 5
+    - 0
   - 
   - 
   - 

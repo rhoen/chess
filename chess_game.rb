@@ -4,6 +4,7 @@ require_relative 'lib/chess_helper'
 require 'yaml'
 require_relative 'util/error'
 require_relative 'lib/player'
+require 'byebug'
 
 class ChessGame
 

@@ -73,6 +73,7 @@ class Pawn < SteppingPiece
       promote(end_pos)
     end
     @board[self.position] = nil
+    @board[end_pos] = self
     self.position = end_pos
   end
 
