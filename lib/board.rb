@@ -54,7 +54,6 @@ class Board
   def move(start, end_pos)
     piece = self[start]
     available_moves = piece.valid_moves
-    byebug
     raise MoveNotAvailableError unless available_moves.include?(end_pos)
     piece.move_to(end_pos)
   rescue MoveNotAvailableError => e

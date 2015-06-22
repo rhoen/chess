@@ -1,5 +1,5 @@
 --- &1 !ruby/object:Board
-moves_since_capture: 2
+moves_since_capture: 0
 squares:
 - - !ruby/object:Rook
     color: :black
@@ -84,35 +84,41 @@ squares:
     color: :black
     board: *1
     position: *6
-  - 
   - !ruby/object:Pawn
     original_square: &7
     - 1
-    - 6
+    - 5
     color: :black
     board: *1
     position: *7
   - !ruby/object:Pawn
     original_square: &8
     - 1
-    - 7
+    - 6
     color: :black
     board: *1
     position: *8
+  - !ruby/object:Pawn
+    original_square: &9
+    - 1
+    - 7
+    color: :black
+    board: *1
+    position: *9
 - - 
   - 
   - 
   - 
   - 
-  - !ruby/object:Pawn
-    original_square:
-    - 1
-    - 5
-    color: :black
-    board: *1
-    position:
-    - 2
-    - 5
+  - 
+  - 
+  - 
+- - 
+  - 
+  - 
+  - 
+  - 
+  - 
   - 
   - 
 - - 
@@ -132,71 +138,61 @@ squares:
   - 
   - 
 - - !ruby/object:Pawn
-    original_square:
-    - 6
-    - 0
-    color: :white
-    board: *1
-    position:
-    - 5
-    - 0
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-- - 
-  - !ruby/object:Pawn
-    original_square: &9
-    - 6
-    - 1
-    color: :white
-    board: *1
-    position: *9
-  - !ruby/object:Pawn
     original_square: &10
     - 6
-    - 2
+    - 0
     color: :white
     board: *1
     position: *10
   - !ruby/object:Pawn
     original_square: &11
     - 6
-    - 3
+    - 1
     color: :white
     board: *1
     position: *11
   - !ruby/object:Pawn
     original_square: &12
     - 6
-    - 4
+    - 2
     color: :white
     board: *1
     position: *12
   - !ruby/object:Pawn
     original_square: &13
     - 6
-    - 5
+    - 3
     color: :white
     board: *1
     position: *13
   - !ruby/object:Pawn
     original_square: &14
     - 6
-    - 6
+    - 4
     color: :white
     board: *1
     position: *14
   - !ruby/object:Pawn
     original_square: &15
     - 6
-    - 7
+    - 5
     color: :white
     board: *1
     position: *15
+  - !ruby/object:Pawn
+    original_square: &16
+    - 6
+    - 6
+    color: :white
+    board: *1
+    position: *16
+  - !ruby/object:Pawn
+    original_square: &17
+    - 6
+    - 7
+    color: :white
+    board: *1
+    position: *17
 - - !ruby/object:Rook
     color: :white
     board: *1
